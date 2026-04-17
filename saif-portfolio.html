@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Saif Alsaeed — Data Analyst & Structural Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0a0b0f;
+    --bg2: #111318;
+    --bg3: #181c24;
+    --card: #13161e;
+    --border: rgba(255,255,255,0.07);
+    --accent: #00e5ff;
+    --accent2: #7c4dff;
+    --accent3: #ff6b35;
+    --text: #e8eaf0;
+    --muted: #6b7280;
+    --gold: #ffd166;
+    --green: #06d6a0;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'DM Sans',sans-serif;
+    font-size:16px;
+    line-height:1.7;
+    overflow-x:hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before{
+    content:'';
+    position:fixed;inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity:0.028;
+    pointer-events:none;z-index:9999;
+  }
+
+  /* ── NAV ── */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 6vw;
+    background:rgba(10,11,15,0.7);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid var(--border);
+    transition:all .3s;
+  }
+  .nav-logo{
+    font-family:'Syne',sans-serif;
+    font-weight:800;font-size:1.2rem;
+    letter-spacing:-0.02em;
+    color:var(--text);
+    text-decoration:none;
+  }
+  .nav-logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:32px;list-style:none;}
+  .nav-links a{
+    color:var(--muted);text-decoration:none;
+    font-size:.875rem;font-weight:500;
+    transition:color .2s;letter-spacing:.02em;
+  }
+  .nav-links a:hover{color:var(--accent);}
+  .nav-cta{
+    background:var(--accent);color:#000;
+    padding:10px 22px;border-radius:50px;
+    font-weight:600;font-size:.85rem;
+    text-decoration:none;
+    transition:all .25s;
+    font-family:'Syne',sans-serif;
+  }
+  .nav-cta:hover{background:#fff;transform:translateY(-1px);}
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .hamburger span{width:24px;height:2px;background:var(--text);display:block;transition:.3s;}
+
+  /* ── HERO ── */
+  .hero{
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding:120px 6vw 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-bg-grid{
+    position:absolute;inset:0;
+    background-image:
+      linear-gradient(rgba(0,229,255,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,.03) 1px, transparent 1px);
+    background-size:60px 60px;
+  }
+  .hero-glow{
+    position:absolute;
+    top:-20%;left:-10%;
+    width:700px;height:700px;
+    background:radial-gradient(circle, rgba(0,229,255,.08) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .hero-glow2{
+    position:absolute;
+    bottom:-20%;right:-5%;
+    width:500px;height:500px;
+    background:radial-gradient(circle, rgba(124,77,255,.08) 0%, transparent 65%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    max-width:1200px;margin:0 auto;width:100%;
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:80px;align-items:center;
+    position:relative;z-index:1;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(0,229,255,.08);
+    border:1px solid rgba(0,229,255,.2);
+    border-radius:50px;
+    padding:6px 16px;margin-bottom:24px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;color:var(--accent);
+    letter-spacing:.05em;
+  }
+  .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
+  .hero h1{
+    font-family:'Syne',sans-serif;
+    font-size:clamp(2.8rem,5vw,4.2rem);
+    font-weight:800;
+    line-height:1.05;
+    letter-spacing:-.03em;
+    margin-bottom:20px;
+  }
+  .hero h1 .line-accent{
+    display:block;
+    background:linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero-sub{
+    font-size:1.1rem;color:var(--muted);
+    max-width:480px;margin-bottom:40px;
+    line-height:1.8;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:linear-gradient(135deg, var(--accent), #00b8d4);
+    color:#000;padding:14px 32px;border-radius:50px;
+    font-weight:700;font-size:.95rem;text-decoration:none;
+    font-family:'Syne',sans-serif;
+    transition:all .25s;
+    box-shadow:0 0 30px rgba(0,229,255,.25);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 40px rgba(0,229,255,.4);}
+  .btn-ghost{
+    border:1px solid var(--border);
+    color:var(--text);padding:14px 32px;border-radius:50px;
+    font-weight:500;font-size:.95rem;text-decoration:none;
+    transition:all .25s;
+    background:rgba(255,255,255,.03);
+  }
+  .btn-ghost:hover{border-color:var(--accent);color:var(--accent);background:rgba(0,229,255,.05);}
+  .hero-stats{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:16px;margin-top:48px;
+  }
+  .stat-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;padding:20px;
+    text-align:center;
+    transition:all .3s;
+  }
+  .stat-card:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .stat-num{
+    font-family:'Syne',sans-serif;
+    font-size:2rem;font-weight:800;
+    color:var(--accent);display:block;
+  }
+  .stat-label{font-size:.8rem;color:var(--muted);margin-top:4px;}
+
+  /* Hero Visual */
+  .hero-visual{position:relative;}
+  .hero-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;padding:32px;
+    position:relative;overflow:hidden;
+  }
+  .hero-card::before{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(135deg,rgba(0,229,255,.05),rgba(124,77,255,.05));
+  }
+  .profile-ring{
+    width:120px;height:120px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 24px;
+    font-family:'Syne',sans-serif;font-size:2.5rem;font-weight:800;
+    color:#000;
+    position:relative;z-index:1;
+    box-shadow:0 0 40px rgba(0,229,255,.3);
+  }
+  .profile-name{
+    font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:700;
+    text-align:center;margin-bottom:4px;position:relative;z-index:1;
+  }
+  .profile-title{
+    text-align:center;color:var(--muted);font-size:.9rem;
+    margin-bottom:24px;position:relative;z-index:1;
+  }
+  .skill-pills{
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:center;
+    position:relative;z-index:1;margin-bottom:24px;
+  }
+  .pill{
+    background:rgba(0,229,255,.08);
+    border:1px solid rgba(0,229,255,.15);
+    color:var(--accent);
+    padding:5px 14px;border-radius:50px;
+    font-size:.78rem;font-family:'JetBrains Mono',monospace;
+  }
+  .pill.p2{background:rgba(124,77,255,.08);border-color:rgba(124,77,255,.2);color:#a78bfa;}
+  .pill.p3{background:rgba(6,214,160,.08);border-color:rgba(6,214,160,.2);color:var(--green);}
+  .pill.p4{background:rgba(255,107,53,.08);border-color:rgba(255,107,53,.2);color:var(--accent3);}
+  .open-badge{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    background:rgba(6,214,160,.08);border:1px solid rgba(6,214,160,.2);
+    border-radius:50px;padding:10px 20px;
+    font-size:.85rem;color:var(--green);
+    position:relative;z-index:1;
+  }
+  .open-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+
+  /* ── SECTION COMMON ── */
+  section{padding:100px 6vw;}
+  .section-inner{max-width:1200px;margin:0 auto;}
+  .section-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:.75rem;letter-spacing:.15em;
+    color:var(--accent);text-transform:uppercase;
+    margin-bottom:12px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .section-label::after{content:'';flex:1;max-width:40px;height:1px;background:var(--accent);opacity:.4;}
+  .section-title{
+    font-family:'Syne',sans-serif;
+    font-size:clamp(2rem,3.5vw,3rem);
+    font-weight:800;letter-spacing:-.03em;
+    margin-bottom:16px;
+  }
+  .section-desc{color:var(--muted);max-width:560px;font-size:1.05rem;margin-bottom:60px;}
+
+  /* ── ABOUT ── */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+  .about-text p{color:var(--muted);margin-bottom:20px;font-size:1.05rem;line-height:1.85;}
+  .about-text p strong{color:var(--text);}
+  .about-values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+  .value-item{
+    display:flex;align-items:flex-start;gap:12px;
+    background:var(--card);border:1px solid var(--border);
+    border-radius:12px;padding:16px;
+    transition:.3s;
+  }
+  .value-item:hover{border-color:var(--accent2);transform:translateY(-2px);}
+  .value-icon{font-size:1.4rem;}
+  .value-text strong{display:block;font-size:.9rem;margin-bottom:2px;}
+  .value-text span{font-size:.8rem;color:var(--muted);}
+  .about-image{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:24px;padding:32px;
+  }
+  .timeline{position:relative;}
+  .timeline::before{
+    content:'';position:absolute;left:16px;top:0;bottom:0;
+    width:1px;background:var(--border);
+  }
+  .tl-item{
+    display:flex;gap:20px;align-items:flex-start;
+    padding:0 0 28px 0;
+    position:relative;
+  }
+  .tl-dot{
+    width:32px;height:32px;min-width:32px;
+    border-radius:50%;
+    background:var(--bg3);
+    border:2px solid var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.75rem;
+    position:relative;z-index:1;
+    color:var(--accent);font-weight:700;
+    font-family:'JetBrains Mono',monospace;
+  }
+  .tl-content strong{display:block;font-size:.95rem;margin-bottom:2px;}
+  .tl-content em{font-style:normal;font-size:.8rem;color:var(--accent);font-family:'JetBrains Mono',monospace;}
+  .tl-content p{font-size:.85rem;color:var(--muted);margin-top:4px;}
+
+  /* ── SKILLS ── */
+  .skills-section{background:var(--bg2);}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;}
+  .skill-group{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:20px;padding:28px;
+    transition:.3s;
+  }
+  .skill-group:hover{border-color:rgba(0,229,255,.3);transform:translateY(-4px);}
+  .sg-icon{font-size:2rem;margin-bottom:16px;}
+  .sg-title{
+    font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;
+    margin-bottom:20px;
+  }
+  .skill-bar-item{margin-bottom:14px;}
+  .sb-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+  .sb-name{font-size:.88rem;color:var(--text);}
+  .sb-pct{font-size:.78rem;color:var(--muted);font-family:'JetBrains Mono',monospace;}
+  .sb-track{height:5px;background:rgba(255,255,255,.07);border-radius:50px;overflow:hidden;}
+  .sb-fill{
+    height:100%;border-radius:50px;
+    background:linear-gradient(90deg,var(--accent),var(--accent2));
+    animation:fillBar 1.2s ease-out forwards;
+    transform:scaleX(0);transform-origin:left;
+  }
+  @keyframes fillBar{to{transform:scaleX(1);}}
+
+  /* ── PROJECTS ── */
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px;}
+  .project-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:20px;overflow:hidden;
+    transition:.3s;
+    display:flex;flex-direction:column;
+  }
+  .project-card:hover{border-color:rgba(0,229,255,.3);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4);}
+  .project-img{
+    height:200px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:4rem;
+    position:relative;overflow:hidden;
+  }
+  .project-img.c1{background:linear-gradient(135deg,rgba(0,229,255,.12),rgba(0,184,212,.06));}
+  .project-img.c2{background:linear-gradient(135deg,rgba(124,77,255,.12),rgba(106,27,154,.06));}
+  .project-img.c3{background:linear-gradient(135deg,rgba(6,214,160,.12),rgba(0,150,136,.06));}
+  .project-img.c4{background:linear-gradient(135deg,rgba(255,107,53,.12),rgba(230,74,25,.06));}
+  .project-img::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(to bottom,transparent 50%,rgba(10,11,15,.8));
+  }
+  .project-tag{
+    position:absolute;top:16px;left:16px;z-index:1;
+    background:rgba(0,229,255,.15);
+    border:1px solid rgba(0,229,255,.3);
+    border-radius:50px;padding:4px 12px;
+    font-size:.72rem;color:var(--accent);
+    font-family:'JetBrains Mono',monospace;letter-spacing:.05em;
+  }
+  .project-tag.live{background:rgba(6,214,160,.15);border-color:rgba(6,214,160,.3);color:var(--green);}
+  .project-body{padding:24px;flex:1;display:flex;flex-direction:column;}
+  .project-title{
+    font-family:'Syne',sans-serif;font-weight:700;
+    font-size:1.15rem;margin-bottom:10px;
+  }
+  .project-desc{font-size:.9rem;color:var(--muted);line-height:1.7;flex:1;}
+  .project-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px;}
+  .ps-tag{
+    background:rgba(255,255,255,.05);border:1px solid var(--border);
+    border-radius:6px;padding:3px 10px;
+    font-size:.75rem;color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+  }
+  .project-links{display:flex;gap:12px;margin-top:20px;}
+  .project-link{
+    display:flex;align-items:center;gap:6px;
+    color:var(--accent);font-size:.85rem;font-weight:500;
+    text-decoration:none;
+    transition:.2s;
+  }
+  .project-link:hover{color:#fff;}
+  .project-link svg{width:14px;height:14px;}
+
+  /* ── EXPERIENCE ── */
+  .exp-section{background:var(--bg2);}
+  .exp-list{display:flex;flex-direction:column;gap:24px;}
+  .exp-card{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:20px;padding:32px;
+    display:grid;grid-template-columns:auto 1fr;gap:24px;
+    transition:.3s;
+  }
+  .exp-card:hover{border-color:rgba(0,229,255,.2);transform:translateX(6px);}
+  .exp-logo{
+    width:52px;height:52px;border-radius:14px;
+    background:var(--bg3);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.5rem;flex-shrink:0;
+  }
+  .exp-company{
+    font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;
+    margin-bottom:2px;
+  }
+  .exp-role{font-size:.9rem;color:var(--accent);margin-bottom:8px;}
+  .exp-date{
+    font-size:.78rem;color:var(--muted);
+    font-family:'JetBrains Mono',monospace;
+    background:rgba(255,255,255,.04);border:1px solid var(--border);
+    padding:3px 10px;border-radius:50px;
+    display:inline-block;margin-bottom:16px;
+  }
+  .exp-bullets{list-style:none;}
+  .exp-bullets li{
+    font-size:.9rem;color:var(--muted);
+    padding:4px 0;display:flex;align-items:flex-start;gap:10px;
+  }
+  .exp-bullets li::before{content:'→';color:var(--accent);flex-shrink:0;font-size:.85rem;}
+
+  /* ── CONTACT ── */
+  .contact-inner{
+    display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;
+  }
+  .contact-info h2{margin-bottom:20px;}
+  .contact-desc{color:var(--muted);font-size:1.05rem;margin-bottom:40px;line-height:1.8;}
+  .contact-items{display:flex;flex-direction:column;gap:16px;}
+  .contact-item{
+    display:flex;align-items:center;gap:16px;
+    background:var(--card);border:1px solid var(--border);
+    border-radius:16px;padding:16px 20px;
+    text-decoration:none;color:var(--text);
+    transition:.3s;
+  }
+  .contact-item:hover{border-color:var(--accent);transform:translateX(6px);}
+  .ci-icon{
+    width:44px;height:44px;border-radius:12px;
+    background:rgba(0,229,255,.1);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;flex-shrink:0;
+  }
+  .ci-label{font-size:.78rem;color:var(--muted);margin-bottom:2px;}
+  .ci-value{font-size:.95rem;font-weight:500;}
+  .contact-form{
+    background:var(--card);border:1px solid var(--border);
+    border-radius:24px;padding:36px;
+  }
+  .form-group{margin-bottom:20px;}
+  .form-group label{
+    display:block;font-size:.82rem;color:var(--muted);
+    margin-bottom:8px;font-family:'JetBrains Mono',monospace;
+    letter-spacing:.05em;text-transform:uppercase;
+  }
+  .form-group input,.form-group textarea{
+    width:100%;
+    background:var(--bg3);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px 18px;
+    color:var(--text);
+    font-family:'DM Sans',sans-serif;
+    font-size:.95rem;
+    outline:none;
+    transition:.3s;
+    resize:none;
+  }
+  .form-group input:focus,.form-group textarea:focus{
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(0,229,255,.08);
+  }
+  .form-group textarea{height:120px;}
+  .btn-submit{
+    width:100%;
+    background:linear-gradient(135deg,var(--accent),var(--accent2));
+    color:#000;border:none;
+    padding:16px;border-radius:12px;
+    font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;
+    cursor:pointer;transition:.3s;
+    letter-spacing:.02em;
+  }
+  .btn-submit:hover{opacity:.9;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,229,255,.3);}
+
+  /* ── FOOTER ── */
+  footer{
+    background:var(--bg2);
+    border-top:1px solid var(--border);
+    padding:40px 6vw;
+    display:flex;align-items:center;justify-content:space-between;
+    flex-wrap:wrap;gap:20px;
+  }
+  .footer-logo{
+    font-family:'Syne',sans-serif;font-weight:800;
+    font-size:1.1rem;color:var(--text);
+  }
+  .footer-logo span{color:var(--accent);}
+  .footer-copy{font-size:.85rem;color:var(--muted);}
+  .footer-socials{display:flex;gap:12px;}
+  .social-btn{
+    width:40px;height:40px;border-radius:10px;
+    background:var(--card);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;
+    color:var(--muted);text-decoration:none;font-size:.9rem;
+    transition:.3s;
+  }
+  .social-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+
+  /* ── SCROLL ANIMATE ── */
+  .fade-up{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.22,1,.36,1);}
+  .fade-up.visible{opacity:1;transform:translateY(0);}
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:900px){
+    .hero-inner,.about-grid,.contact-inner{grid-template-columns:1fr;}
+    .hero-visual{display:none;}
+    nav .nav-links,.nav-cta{display:none;}
+    .hamburger{display:flex;}
+    .hero-stats{grid-template-columns:repeat(3,1fr);}
+    .exp-card{grid-template-columns:1fr;}
+    .exp-logo{display:none;}
+  }
+  @media(max-width:560px){
+    .hero-stats{grid-template-columns:1fr 1fr;}
+    .about-values{grid-template-columns:1fr;}
+    .projects-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr;}
+  }
+
+  /* ── CURSOR ── */
+  .cursor{
+    width:12px;height:12px;
+    border-radius:50%;background:var(--accent);
+    position:fixed;pointer-events:none;z-index:9998;
+    transform:translate(-50%,-50%);
+    transition:transform .1s;mix-blend-mode:exclusion;
+  }
+  .cursor-ring{
+    width:36px;height:36px;border-radius:50%;
+    border:1px solid rgba(0,229,255,.4);
+    position:fixed;pointer-events:none;z-index:9997;
+    transform:translate(-50%,-50%);
+    transition:all .15s ease-out;
+  }
+</style>
+</head>
+<body>
+
+<!-- Cursors -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#"><span>//</span> Saif Alsaeed</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:saifalsaeed4444@gmail.com">Hire Me</a>
+  <button class="hamburger" id="ham" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-content fade-up">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+      <h1>
+        Engineer.<br/>
+        <span class="line-accent">Data Analyst.</span>
+        Builder.
+      </h1>
+      <p class="hero-sub">
+        Civil Engineer turned Data Analyst — bridging the physical world of structural design with the digital precision of Python, automation, and data-driven insights.
+      </p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#projects">View My Work</a>
+        <a class="btn-ghost" href="#contact">Let's Talk</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-num">4+</span>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">7</span>
+          <div class="stat-label">Steel Factories Designed</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num">3</span>
+          <div class="stat-label">Live Web Projects</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual fade-up" style="transition-delay:.15s">
+      <div class="hero-card">
+        <div class="profile-ring">SA</div>
+        <div class="profile-name">Saif Alsaeed Alkomy</div>
+        <div class="profile-title">Data Analyst · Structural Engineer · Automation</div>
+        <div class="skill-pills">
+          <span class="pill">Python</span>
+          <span class="pill">Web Scraping</span>
+          <span class="pill p2">Tekla BIM</span>
+          <span class="pill p2">SAP2000</span>
+          <span class="pill p3">Excel Advanced</span>
+          <span class="pill p3">Power Query</span>
+          <span class="pill p4">HTML/CSS</span>
+          <span class="pill p4">GitHub</span>
+        </div>
+        <div class="open-badge">
+          <span class="open-dot"></span>
+          Open to relocation · Remote-friendly
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Where Engineering Meets Data</h2>
+        <p>I'm a <strong>Civil Engineer with 4+ years</strong> of hands-on experience in structural design, BIM coordination, and project management — now actively transitioning into <strong>Data Analysis and Automation</strong>.</p>
+        <p>My engineering background gives me an edge most data analysts lack: I understand real-world processes deeply, which means I build dashboards and automation tools that actually solve operational problems — not just pretty charts.</p>
+        <p>Currently working at <strong>Tiger Company</strong> as a Project Engineer, where I track KPIs and build Excel dashboards, while simultaneously developing Python automation and web scraping skills through personal projects.</p>
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-icon">🏗️</div>
+            <div class="value-text"><strong>Structural Design</strong><span>Steel factories, BIM, shop drawings</span></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">📊</div>
+            <div class="value-text"><strong>Data Analytics</strong><span>Excel, dashboards, automation</span></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🐍</div>
+            <div class="value-text"><strong>Python Dev</strong><span>Scraping, automation scripts</span></div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🌍</div>
+            <div class="value-text"><strong>Multilingual</strong><span>Arabic · English B2 · German A2</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="about-image fade-up" style="transition-delay:.15s">
+        <div class="section-label">Career Journey</div>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot">25</div>
+            <div class="tl-content">
+              <strong>Project Engineer — Tiger Company</strong>
+              <em>Oct 2025 – Present</em>
+              <p>Managing all project activities, KPI tracking, Excel dashboards</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">25</div>
+            <div class="tl-content">
+              <strong>Steel Structure Engineer — CSCEC</strong>
+              <em>Apr – Sep 2025</em>
+              <p>BIM coordination, Tekla-Revit integration, IFC export</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">23</div>
+            <div class="tl-content">
+              <strong>Senior Design Engineer — El-Ettihad Company</strong>
+              <em>Oct 2023 – Apr 2025</em>
+              <p>Designed 7 complete steel factories end-to-end</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">23</div>
+            <div class="tl-content">
+              <strong>Site Engineer — Castle Office</strong>
+              <em>Jan – Sep 2023</em>
+              <p>Site supervision, quality control, New Damietta</p>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot">21</div>
+            <div class="tl-content">
+              <strong>B.Sc. Civil Engineering — Delta Higher Institute</strong>
+              <em>Graduation 2021</em>
+              <p>Graduation Project (Steel Structures): Excellent</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="section-inner">
+    <div class="section-label fade-up">Technical Skills</div>
+    <h2 class="section-title fade-up">What I Bring to the Table</h2>
+    <p class="section-desc fade-up">A rare combination of structural engineering expertise and emerging data & automation skills.</p>
+    <div class="skills-grid">
+      <div class="skill-group fade-up">
+        <div class="sg-icon">🐍</div>
+        <div class="sg-title">Data & Automation</div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">Python (Automation)</span><span class="sb-pct">70%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">Web Scraping</span><span class="sb-pct">65%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:65%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">Excel Advanced</span><span class="sb-pct">90%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">Power Query</span><span class="sb-pct">80%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:80%"></div></div>
+        </div>
+      </div>
+      <div class="skill-group fade-up" style="transition-delay:.1s">
+        <div class="sg-icon">🏗️</div>
+        <div class="sg-title">Engineering Software</div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">Tekla Structures</span><span class="sb-pct">92%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">SAP2000 / ETABS</span><span class="sb-pct">85%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:85%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">AutoCAD 2D</span><span class="sb-pct">90%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">BIM / IFC</span><span class="sb-pct">78%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:78%"></div></div>
+        </div>
+      </div>
+      <div class="skill-group fade-up" style="transition-delay:.2s">
+        <div class="sg-icon">🌐</div>
+        <div class="sg-title">Web & Productivity</div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">HTML / CSS</span><span class="sb-pct">75%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">GitHub</span><span class="sb-pct">70%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:70%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">Microsoft Office Suite</span><span class="sb-pct">95%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:95%"></div></div>
+        </div>
+        <div class="skill-bar-item">
+          <div class="sb-top"><span class="sb-name">Project Management</span><span class="sb-pct">88%</span></div>
+          <div class="sb-track"><div class="sb-fill" style="width:88%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label fade-up">Portfolio</div>
+    <h2 class="section-title fade-up">Live Projects & Work</h2>
+    <p class="section-desc fade-up">Real-world websites, automation scripts, and engineering projects — each built to solve actual problems.</p>
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-img c1">
+          <span>🐾</span>
+          <div class="project-tag live">● Live</div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Tiger Feed — Animal Feed Factory Website</div>
+          <p class="project-desc">Full Arabic-language commercial website for a poultry & rabbit feed manufacturer. Features product catalogue, WhatsApp CTA integration, responsive Arabic RTL layout, and professional branding.</p>
+          <div class="project-stack">
+            <span class="ps-tag">HTML</span>
+            <span class="ps-tag">CSS</span>
+            <span class="ps-tag">JavaScript</span>
+            <span class="ps-tag">RTL Arabic</span>
+            <span class="ps-tag">WhatsApp API</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="https://saif-alsaeed.github.io/tiger-feed/" target="_blank">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a class="project-link" href="https://github.com/saif-alsaeed/tiger-feed" target="_blank" style="color:var(--muted)">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" style="transition-delay:.1s">
+        <div class="project-img c2">
+          <span>✈️</span>
+          <div class="project-tag live" style="background:rgba(124,77,255,.15);border-color:rgba(124,77,255,.3);color:#a78bfa;">● Live</div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Noctrapaths Travel — Travel Blog & Guide</div>
+          <p class="project-desc">Modern English travel blog featuring destination guides for Japan, Europe, Indonesia & South Korea. Includes hero slider, newsletter lead capture, travel tips section, and mobile-first responsive design.</p>
+          <div class="project-stack">
+            <span class="ps-tag">HTML</span>
+            <span class="ps-tag">CSS</span>
+            <span class="ps-tag">JavaScript</span>
+            <span class="ps-tag">Email Lead Gen</span>
+            <span class="ps-tag">UX Design</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="https://saif-alsaeed.github.io/travel/#" target="_blank">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              Live Demo
+            </a>
+            <a class="project-link" href="https://github.com/saif-alsaeed/travel" target="_blank" style="color:var(--muted)">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+              Source
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" style="transition-delay:.2s">
+        <div class="project-img c3">
+          <span>🏭</span>
+          <div class="project-tag" style="background:rgba(6,214,160,.15);border-color:rgba(6,214,160,.3);color:var(--green);">Engineering</div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">7 Steel Factory Designs — El-Ettihad</div>
+          <p class="project-desc">End-to-end structural design and supervision of 7 complete steel factory buildings. Included structural analysis in SAP2000, detailed shop drawings in Tekla, electrical, drainage, and fire protection systems.</p>
+          <div class="project-stack">
+            <span class="ps-tag">Tekla Structures</span>
+            <span class="ps-tag">SAP2000</span>
+            <span class="ps-tag">AutoCAD</span>
+            <span class="ps-tag">Shop Drawings</span>
+            <span class="ps-tag">Excel Tracking</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="#contact">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+              Request Details
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card fade-up" style="transition-delay:.3s">
+        <div class="project-img c4">
+          <span>🤖</span>
+          <div class="project-tag" style="background:rgba(255,107,53,.15);border-color:rgba(255,107,53,.3);color:var(--accent3);">Python</div>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Python Automation & Web Scraping Projects</div>
+          <p class="project-desc">Collection of automation scripts and web scrapers built with Python. Projects tackle real tasks: data extraction, report automation, and workflow optimization. Available on GitHub.</p>
+          <div class="project-stack">
+            <span class="ps-tag">Python</span>
+            <span class="ps-tag">BeautifulSoup</span>
+            <span class="ps-tag">Requests</span>
+            <span class="ps-tag">Pandas</span>
+            <span class="ps-tag">GitHub</span>
+          </div>
+          <div class="project-links">
+            <a class="project-link" href="https://github.com/saifalsaeed" target="_blank">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              GitHub Profile
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="exp-section">
+  <div class="section-inner">
+    <div class="section-label fade-up">Work Experience</div>
+    <h2 class="section-title fade-up">Professional History</h2>
+    <p class="section-desc fade-up">4+ years across multinational firms and local companies in Egypt, building expertise in structural engineering, BIM, and project management.</p>
+    <div class="exp-list">
+
+      <div class="exp-card fade-up">
+        <div class="exp-logo">🏢</div>
+        <div>
+          <div class="exp-company">Tiger Company</div>
+          <div class="exp-role">Project Engineer</div>
+          <div class="exp-date">Oct 2025 – Present</div>
+          <ul class="exp-bullets">
+            <li>Managing and supervising all project activities from planning through execution</li>
+            <li>Coordinating cross-functional teams to maintain schedule adherence and quality standards</li>
+            <li>Tracking project KPIs and preparing progress reports using Excel dashboards</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card fade-up" style="transition-delay:.1s">
+        <div class="exp-logo">🏗️</div>
+        <div>
+          <div class="exp-company">CSCEC — China State Construction Engineering Corp.</div>
+          <div class="exp-role">Steel Structure Engineer</div>
+          <div class="exp-date">Apr 2025 – Sep 2025</div>
+          <ul class="exp-bullets">
+            <li>Integrated Tekla and Revit models for the BIM team; exported coordinated models in IFC format</li>
+            <li>Modified and maintained as-built drawings on Tekla for large-scale active construction projects</li>
+            <li>Contributed to structural detailing for major infrastructure projects</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card fade-up" style="transition-delay:.2s">
+        <div class="exp-logo">🔩</div>
+        <div>
+          <div class="exp-company">El-Ettihad Company for Metal Construction</div>
+          <div class="exp-role">Senior Design & Detailing Engineer</div>
+          <div class="exp-date">Oct 2023 – Apr 2025</div>
+          <ul class="exp-bullets">
+            <li>Designed 7 complete steel factories and supervised the full manufacturing and implementation cycle</li>
+            <li>Produced shop drawings for steel, electrical, drainage, and fire protection systems</li>
+            <li>Optimized designs based on performance analysis and client requirements</li>
+            <li>Built Excel tracking sheets to monitor quantities, costs, and production milestones</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-card fade-up" style="transition-delay:.3s">
+        <div class="exp-logo">🏛️</div>
+        <div>
+          <div class="exp-company">Castle Office — New Damietta, Egypt</div>
+          <div class="exp-role">Site Engineer</div>
+          <div class="exp-date">Jan 2023 – Sep 2023</div>
+          <ul class="exp-bullets">
+            <li>Supervised daily site activities and ensured compliance with project specifications</li>
+            <li>Quality control and coordination with contractors on-site</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="fade-up">
+        <div class="section-label">Contact</div>
+        <h2 class="section-title">Let's Build Something Together</h2>
+        <p class="contact-desc">Whether you need a data analyst, a structural engineer, a developer for your next web project, or someone who can do all three — I'm open to opportunities and relocation.</p>
+        <div class="contact-items">
+          <a class="contact-item" href="mailto:saifalsaeed4444@gmail.com">
+            <div class="ci-icon">📧</div>
+            <div>
+              <div class="ci-label">Email</div>
+              <div class="ci-value">saifalsaeed4444@gmail.com</div>
+            </div>
+          </a>
+          <a class="contact-item" href="tel:+201096310343">
+            <div class="ci-icon">📱</div>
+            <div>
+              <div class="ci-label">Phone / WhatsApp</div>
+              <div class="ci-value">+20 109 631 0343</div>
+            </div>
+          </a>
+          <a class="contact-item" href="https://linkedin.com/in/saif-alsaeed-7664b5278" target="_blank">
+            <div class="ci-icon">💼</div>
+            <div>
+              <div class="ci-label">LinkedIn</div>
+              <div class="ci-value">saif-alsaeed-7664b5278</div>
+            </div>
+          </a>
+          <a class="contact-item" href="https://github.com/saifalsaeed" target="_blank">
+            <div class="ci-icon">🐙</div>
+            <div>
+              <div class="ci-label">GitHub</div>
+              <div class="ci-value">github.com/saifalsaeed</div>
+            </div>
+          </a>
+          <div class="contact-item" style="cursor:default;">
+            <div class="ci-icon">📍</div>
+            <div>
+              <div class="ci-label">Location</div>
+              <div class="ci-value">Egypt · Open to Relocation</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form fade-up" style="transition-delay:.15s">
+        <div class="section-label" style="margin-bottom:20px;">Send a Message</div>
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="John Smith" id="fname"/>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@company.com" id="femail"/>
+        </div>
+        <div class="form-group">
+          <label>Subject</label>
+          <input type="text" placeholder="Job opportunity / Collaboration / Project" id="fsubject"/>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell me about the opportunity or project..." id="fmsg"></textarea>
+        </div>
+        <button class="btn-submit" onclick="handleSubmit()">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo"><span>//</span> Saif Alsaeed</div>
+  <div class="footer-copy">© 2025 Saif Alsaeed Alkomy · Built with passion from Egypt 🇪🇬</div>
+  <div class="footer-socials">
+    <a class="social-btn" href="https://linkedin.com/in/saif-alsaeed-7664b5278" target="_blank" title="LinkedIn">in</a>
+    <a class="social-btn" href="https://github.com/saifalsaeed" target="_blank" title="GitHub">gh</a>
+    <a class="social-btn" href="mailto:saifalsaeed4444@gmail.com" title="Email">@</a>
+  </div>
+</footer>
+
+<script>
+// Custom Cursor
+const cur = document.getElementById('cur');
+const curR = document.getElementById('curR');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+  setTimeout(() => {
+    curR.style.left = e.clientX + 'px';
+    curR.style.top = e.clientY + 'px';
+  }, 80);
+});
+
+// Scroll Animations
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Navbar scroll
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if(window.scrollY > 60) {
+    nav.style.padding = '14px 6vw';
+  } else {
+    nav.style.padding = '20px 6vw';
+  }
+});
+
+// Contact form handler
+function handleSubmit() {
+  const name = document.getElementById('fname').value;
+  const email = document.getElementById('femail').value;
+  const subject = document.getElementById('fsubject').value;
+  const msg = document.getElementById('fmsg').value;
+  if(!name || !email || !msg) { alert('Please fill in all required fields.'); return; }
+  const mailto = `mailto:saifalsaeed4444@gmail.com?subject=${encodeURIComponent(subject || 'Portfolio Contact')}&body=${encodeURIComponent('From: ' + name + '\nEmail: ' + email + '\n\n' + msg)}`;
+  window.open(mailto);
+}
+
+// Hamburger (mobile)
+document.getElementById('ham').addEventListener('click', () => {
+  alert('Menu: About | Skills | Projects | Experience | Contact\n\nEmail: saifalsaeed4444@gmail.com\nPhone: +20 109 631 0343');
+});
+</script>
+</body>
+</html>
